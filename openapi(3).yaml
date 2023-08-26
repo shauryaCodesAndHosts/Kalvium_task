@@ -1,0 +1,73 @@
+openapi: 3.0.3
+info:
+  title: Kalvium 
+  description: API documentation for Kalvium Test
+  version: 1.0.0
+  contact : 
+    name : Shaurya Yamdagni
+    email : shauryayamdagni0@gmail.com
+    url : https://shaurya-yamdagni.me
+
+servers:
+  - url: http://localhost:3000
+  - url: http://139.59.62.61:5000
+
+tags:              # Define your global tags here
+  - name: Calculation API
+    description: Get the calcualtion of the URL arguments
+  - name : History
+    description : To get the last 20 entries 
+
+paths:
+  /{path_calc}:
+    description : to get the evaluation result of path
+    get:
+      description: to get the answer
+      summary: Get the answer
+      operationId: getAns
+      parameters : 
+        - in : path
+          required : true
+          name : path_calc
+          schema: 
+            type: string
+          description : the mathemeatial string
+      tags : 
+        - Calculation API
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: product
+                type: object
+                properties:
+                  answer : 
+                    type: integer
+                    example: 100
+                  question:
+                    type: string
+                    example: "3-2"
+        '404':
+          description: Not Found
+        '201':
+           description : Not 
+  /history :
+    description : to get the history
+    get :
+      operationId : last_twenty
+      tags : 
+        - History
+      responses:
+        '200' : 
+          description : Successfful response 
+          content : 
+            application/json:
+              example: 
+                - question : "3-2"
+                  answer : 1
+                - question : "3*2"
+                  answer : 6
+
+      description : to get the last 20 operations
