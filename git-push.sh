@@ -21,7 +21,7 @@ repo_url= "https://$gitUrl"
 
 echo $repo_url
 
-$(git remote add origin "https://$gitUrl"
+$(git remote add origin "https://$gitUrl")
 
 $(git push -u origin master)
 
